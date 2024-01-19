@@ -2,20 +2,22 @@ import 'package:beardog_app/presentation/lobby/widgets/rounded_container.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SalaEsperaScreen extends StatelessWidget {
-  const SalaEsperaScreen({super.key});
+class WaitingRoomScreen extends StatelessWidget {
+  const WaitingRoomScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
       backgroundColor: const Color(0xff4788E9),
       appBar:  AppBar(
         leading: IconButton(
-          onPressed: () => {}, 
-          icon: const Icon( Icons.arrow_back_ios_new_rounded )
-        ),
+          onPressed: () => {
+            context.pop()
+          }, 
+          icon: const Icon( Icons.arrow_back_ios_new_rounded, color: Color(0xffffffff), )
+        ),        
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         // title: const Text(
@@ -78,8 +80,7 @@ class SalaEsperaScreen extends StatelessWidget {
               // color: Colors.amber,
               child: ElevatedButton(
                 onPressed: () {
-                  // context.push('/seleccion-juego');
-                  print('Clicked');
+                  context.push('/game-resume');
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>( Colors.redAccent ),
